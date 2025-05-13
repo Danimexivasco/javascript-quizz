@@ -10,6 +10,9 @@ export function Start() {
     <Button
       onClick={() => fetchQuestions(LIMIT_QUESTIONS)}
       variant="contained"
+      sx={{
+        mt: 4
+      }}
     >Start
     </Button>
   );
