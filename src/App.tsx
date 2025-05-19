@@ -1,9 +1,9 @@
 import "./App.css";
 import { Container, Stack, Typography } from "@mui/material";
 import { JSIcon } from "./components/icons/js";
-import { Start } from "./Start";
+import { Start } from "./components/Start";
 import { useQuestionsStore } from "./store/questions";
-import { Game } from "./Game";
+import { Game } from "./components/Game";
 
 function App() {
   const questions = useQuestionsStore((state) => state.questions);

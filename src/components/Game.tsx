@@ -11,12 +11,12 @@ import {
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { androidstudio } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
-import { useQuestionsStore } from "./store/questions";
+import { useQuestionsStore } from "../store/questions";
 
-import { type Question as QuestionType } from "./types";
+import { type Question as QuestionType } from "../types";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { useEffect } from "react";
-import Footer from "./components/Footer";
+import Footer from "./Footer";
 
 const getBackgroundColor = (question: QuestionType, index: number) => {
   const { userSelectedAnswer, correctAnswer } = question;
