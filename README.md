@@ -1,54 +1,42 @@
-# React + TypeScript + Vite
+# 🧠 JavaScript Quizz
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern JavaScript quiz application built with **Vite**, **Zustand**, and **Material UI**, featuring a clean modular architecture. The app provides an engaging way to test your JavaScript knowledge through a dynamic multiple-choice quiz experience.
 
-Currently, two official plugins are available:
+## 🌟 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✅ Multiple-choice JavaScript questions
+- ⚛️ Built with [Vite](https://vitejs.dev/) for fast development and hot module replacement
+- 🧠 State management via [Zustand](https://github.com/pmndrs/zustand)
+- 🎨 UI built with [Material UI](https://mui.com/)
+- 🪝 Uses custom React hooks for logic abstraction
+- 📦 Modular component-based structure for scalability
+- 📊 Score tracking and reset functionality
+- 💡 Clean, responsive UI
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Run Locally
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/Danimexivasco/javascript-quizz.git
+cd javascript-quizz
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Install dependencies**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+pnpm install
+# or
+npm install
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+3. **Run the app**
+
+```bash
+pnpm dev
+# or
+npm run dev
 ```
