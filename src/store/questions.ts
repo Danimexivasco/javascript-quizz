@@ -1,7 +1,8 @@
 import { create } from "zustand";
-import type { Question } from "../types";
 import confetti from "canvas-confetti";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { persist } from "zustand/middleware";
+import type { Question } from "../types";
+
 // import { devtools } from "zustand/middleware"; // Devtools can be used with redux devtools chrome extension
 import { getQuestions } from "../services/questions";
 
@@ -15,6 +16,7 @@ type State = {
   resetGame: () => void
 };
 
+// Logger middleware example
 // const logger = (config: any) => (set: any, get: any, api: any) => {
 //   return config((...args) => {
 //     console.log("applying", args);
@@ -87,7 +89,7 @@ export const useQuestionsStore = create<State>()(persist((set, get) => {
     }
   };
 }, {
-  name:    "questions",
-  storage: createJSONStorage(() => sessionStorage) // Default is localStorage, no settings needed
+  name: "questions"
+  // storage: createJSONStorage(() => sessionStorage) // Default is localStorage, no settings needed
 }));
 
