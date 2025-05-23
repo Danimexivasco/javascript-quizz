@@ -31,13 +31,13 @@ body {
 
 
 .answer-button.correct {
-  background-color: #2e7d32;
+  background-color: #2e7d32 !important;
 }
 .answer-button.wrong {
-  background-color: #c62828;
+  background-color: #c62828 !important;
 }
 .answer-button.neutral {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 
