@@ -1,9 +1,12 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useQuestionsData } from "../hooks/useQuestionsData";
 import { useQuestionsStore } from "../store/questions";
+import FinalMessage from "./FinalMessage";
 
 export default function Footer() {
   const resetGame = useQuestionsStore((state) => state.resetGame);
+  const questions = useQuestionsStore((state) => state.questions);
+  const language = useQuestionsStore((state) => state.language);
   const { correct, incorrect, unanswered } = useQuestionsData();
 
   return (
@@ -23,24 +26,30 @@ export default function Footer() {
         <Typography
           variant="h6"
         >
-          ✅Correct: {correct}
+          ✅{language === "en" ? "Correct" : "Correctas"}: {correct}
         </Typography>
         <Typography
           variant="h6"
         >
-          ❌Incorrect: {incorrect}
+          ❌{language === "en" ? "Incorrect" : "Incorrectas"}: {incorrect}
         </Typography>
         <Typography
           variant="h6"
         >
-          ❔Unanswered: {unanswered}
+          ❔{language === "en" ? "Unanswered" : "Sin responder"}: {unanswered}
         </Typography>
       </Stack>
+
+      {correct + incorrect === questions.length && <FinalMessage
+        correct={correct}
+        incorrect={incorrect}
+      />}
+
       <Button
         variant="contained"
         onClick={resetGame}
       >
-        Resetear juego
+        {language === "en" ? "Reset Game" : "Resetear juego"}
       </Button>
     </Stack>
   );
