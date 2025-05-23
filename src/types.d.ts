@@ -1,3 +1,5 @@
+export type Language = "en" | "es";
+
 export type Question = {
   id: number;
   question: string;
@@ -6,4 +8,9 @@ export type Question = {
   correctAnswer: number;
   userSelectedAnswer?: number | null;
   isCorrectUserAnswer?: boolean;
+};
+
+export type BilingualQuestion = {
+  en: Question;
+  es: Question;
 };

@@ -1,3 +1,4 @@
+import { useEffect, memo } from "react";
 import {
   Card,
   IconButton,
@@ -8,31 +9,26 @@ import {
   Stack,
   Typography
 } from "@mui/material";
+import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { androidstudio } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import { useQuestionsStore } from "../store/questions";
-
 import type { Question as QuestionType } from "../types.d.ts";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
-import { useEffect } from "react";
 import Footer from "./Footer";
 
-const getBackgroundColor = (question: QuestionType, index: number) => {
+const getAnswerStatus = (question: QuestionType, index: number): "correct" | "wrong" | "neutral" => {
   const { userSelectedAnswer, correctAnswer } = question;
 
-  if (userSelectedAnswer == null) return "transparent";
+  if (userSelectedAnswer == null) return "neutral";
 
-  if (index !== correctAnswer && index !== userSelectedAnswer) return "transparent";
+  if (index === correctAnswer) return "correct";
+  if (index === userSelectedAnswer) return "wrong";
 
-  if (index === correctAnswer) return "green";
-
-  if (index === userSelectedAnswer) return "red";
-
-  return "transparent";
+  return "neutral";
 };
 
-const Question = ({ question }: {question: QuestionType}) => {
+const Question = memo(({ question }: {question: QuestionType}) => {
   const selectAnswer = useQuestionsStore((state) => state.selectAnswer);
 
   const createHandleClick = (answerIndex: number) => () => selectAnswer(question.id, answerIndex);
@@ -71,9 +67,7 @@ const Question = ({ question }: {question: QuestionType}) => {
             <ListItemButton
               disabled={question.userSelectedAnswer != null}
               onClick={createHandleClick(index)}
-              sx={{
-                backgroundColor: getBackgroundColor(question, index)
-              }}
+              className={`answer-button ${getAnswerStatus(question, index)}`}
             >
               <ListItemText
                 primary={answer}
@@ -87,10 +81,13 @@ const Question = ({ question }: {question: QuestionType}) => {
       </List>
     </Card>
   );
-};
+});
+
+Question.displayName = "Question";
 
 export function Game() {
   const questions = useQuestionsStore((state) => state.questions);
+  const language = useQuestionsStore((state) => state.language);
   const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
   const goNextQuestion = useQuestionsStore((state) => state.goNextQuestion);
   const goPreviousQuestion = useQuestionsStore((state) => state.goPreviousQuestion);
@@ -108,7 +105,7 @@ export function Game() {
     };
   }, [goPreviousQuestion, goNextQuestion]);
 
-  const question = questions[currentQuestion];
+  const question = questions[currentQuestion][language];
 
   return (
     <>
@@ -135,7 +132,10 @@ export function Game() {
           <ArrowForward />
         </IconButton>
       </Stack>
-      <Question question={question}/>
+      <Question
+        key={question.id}
+        question={question}
+      />
       <Footer />
     </>
   );
