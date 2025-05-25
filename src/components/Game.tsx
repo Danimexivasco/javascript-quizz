@@ -42,7 +42,11 @@ const Question = memo(({ question }: {question: QuestionType}) => {
         p:         2
       }}
     >
-      <Typography variant="h5">{question.question}</Typography>
+      <Typography
+        variant="h5"
+        data-testid="question"
+      >{question.question}
+      </Typography>
 
       <SyntaxHighlighter
         language="typescript"
@@ -121,6 +125,7 @@ export function Game() {
         <IconButton
           onClick={goPreviousQuestion}
           disabled={currentQuestion === 0}
+          aria-label="Go to previous question"
         >
           <ArrowBack/>
         </IconButton>
@@ -128,6 +133,7 @@ export function Game() {
         <IconButton
           onClick={goNextQuestion}
           disabled={currentQuestion === questions.length - 1}
+          aria-label="Go to next question"
         >
           <ArrowForward />
         </IconButton>

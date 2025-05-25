@@ -2,6 +2,8 @@
 
 A modern JavaScript quiz application built with **Vite**, **Zustand**, and **Material UI**, featuring a clean modular architecture. The app provides an engaging way to test your JavaScript knowledge through a dynamic multiple-choice quiz experience.
 
+It has CI/CD setted up with GitHub Actions, using [Playwright](https://playwright.dev/) for end-to-end testing.
+
 ## 🌟 Features
 
 - ✅ Multiple-choice JavaScript questions
@@ -13,7 +15,7 @@ A modern JavaScript quiz application built with **Vite**, **Zustand**, and **Mat
 - 📊 Score tracking and reset functionality
 - 💡 Clean, responsive UI
 
-## 🚀 Getting Started
+## 🚀 Installation
 
 
 ### Run Locally
@@ -40,3 +42,21 @@ pnpm dev
 # or
 npm run dev
 ```
+
+## 🧪 Run tests
+
+### Headless mode
+
+```bash
+pnpm test:e2e
+# or
+npm run test:e2e
+```
+
+### UI mode
+
+```bash
+pnpm test:e2e:ui
+# or
+npm run test:e2e:ui
+``` 

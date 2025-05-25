@@ -43,7 +43,7 @@ export function Start() {
       </Typography>
       <Slider
         defaultValue={DEFAULT_QUESTIONS}
-        aria-label="Default"
+        aria-label={language === "en" ? "Select the number of questions" : "Seleccione el número de preguntas"}
         getAriaValueText={valueText}
         valueLabelDisplay="auto"
         shiftStep={30}

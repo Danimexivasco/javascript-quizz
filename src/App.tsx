@@ -26,6 +26,7 @@ function App() {
           <Button
             variant={language === "en" ? "contained" : "outlined"}
             startIcon={<UsaFlag />}
+            aria-selected={language === "en"}
             onClick={() => setLanguage("en")}
           >
             EN
@@ -33,6 +34,7 @@ function App() {
           <Button
             variant={language === "es" ? "contained" : "outlined"}
             startIcon={<SpaingFlag />}
+            aria-selected={language === "es"}
             onClick={() => setLanguage("es")}
           >
             ES

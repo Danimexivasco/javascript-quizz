@@ -25,16 +25,19 @@ export default function Footer() {
       >
         <Typography
           variant="h6"
+          aria-label="correct answers"
         >
           ✅{language === "en" ? "Correct" : "Correctas"}: {correct}
         </Typography>
         <Typography
           variant="h6"
+          aria-label="incorrect answers"
         >
           ❌{language === "en" ? "Incorrect" : "Incorrectas"}: {incorrect}
         </Typography>
         <Typography
           variant="h6"
+          aria-label="unanswered answers"
         >
           ❔{language === "en" ? "Unanswered" : "Sin responder"}: {unanswered}
         </Typography>
